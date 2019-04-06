@@ -1,13 +1,92 @@
-.AllMovies {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: 30px;
+.App .header-img {
+  background-image: url("./img/cover2.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 650px;
+  position: absolute;
+  right: 0;
+  left: 0;
 }
 
-.movie {
+.header {
   display: flex;
-  flex-flow: row;
-  flex-direction: column;
+  justify-content: space-between;
+  line-height: 100px;
+}
+
+.header img {
+  width: 100px;
+  height: 100px;
+}
+
+.header .header-links>a {
+  margin-right: 20px;
+}
+
+.Login .login-form {
   width: 300px;
+  height: 300px;
+  display: inline-block;
+  margin-top: 150px;
+  border: 1px solid #20599a;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: #ffffff;
+}
+
+.Login .login-form #login-title {
+  color: #20599a;
+  margin-top: 10px;
+}
+
+.registration .Registration-form {
+  width: 400px;
+  height: 450px;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  border: 1px solid #20599a;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.registration .Registration-form #emailHelp {
+  display: flex;
+}
+
+.registration .Registration-form #Registration-title {
+  color: #20599a;
+  margin-top: 10px;
+}
+
+.Vacation .card {
+  width: 300px;
+  height: 400px;
+}
+
+.addVacation .Registration-form {
+  width: 800px;
+  height: 600px;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  border: 1px solid #20599a;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.addVacation .Registration-form h4{
+  color: #20599a;
+}
+
+.addVacation .Registration-form label{
+display: flex;
+color: #20599a;
+}
+
+.addVacation .Registration-form button{
+  width: 100%;
 }

@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
+import dreamvacation from './img/dreamvacation.jpg'
 import './App.css';
-
-import SearchMovie from './components/SearchMovie';
-import AllMovies from './components/AllMovies';
-
+//import { login } from './state/actions';
+ import Login from './components/Login'
+import Registration from './components/Registration';
+import Header from './components/Header';
+import AddVacation from './components/AddVacation';
 
 class App extends Component {
+
+  componentDidMount() {
+
+  }
   render() {
     return (
       <div className="App">
-     
-      
-       <SearchMovie/>
-       <AllMovies/>
+      <Header/>
+      <div className="header-img">
+        {this.props.children}
+       </div>
 
-
+       <AddVacation/>
       </div>
     );
   }
