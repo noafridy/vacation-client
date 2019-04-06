@@ -25,9 +25,12 @@ class AddVacation extends Component {
   }
 
   addVactionToDB() {
-    let obj = { ...this.state };  //... its for only copy and not mazbia!
+    let obj = { ...this.state };  //... its for only copy and not pointer!
     obj.fromDate = (new Date(obj.fromDate)).toISOString();
     obj.toDate = (new Date(obj.toDate)).toISOString();
+    let from = obj.fromDate.slice(0,10);
+    let to = obj.toDate.slice(0,10);
+    debugger
     this.props.dispatchInsertVacation(this.state);
   }
 
@@ -48,7 +51,8 @@ class AddVacation extends Component {
           </div>
           <div className="form-group">
             <label >Please insert img</label>
-            <input name="img" onChange={this.uploadFileToServer.bind(this)} type="file" class="form-control-file" />
+            <input name="img" onChange={this.uploadFileToServer.bind(this)} type='file' accept="image/*" class="form-control-file" />
+            {(this.state && this.state.base64IFile !== null) && <img src={`data:image/png;base64, ${this.state.img}`} alt="image for upload" />}
           </div>
 
           <div className="form-group">

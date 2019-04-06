@@ -12,7 +12,7 @@ class Vacation extends Component {
       <div className="Vacation">
         {/* <div className="card" style="width: 18rem;"> */}
         <div className="card">
-          <img className="card-img-top" src={this.props.vacation.img} alt="Card image cap" />
+          <img className="card-img-top" src={`data:image/png;base64,${this.props.vacation.img}`} alt="Card image cap" />
           <div className="card-body">
             <h6 className="card-title">{this.props.vacation.destination}</h6>
             <p className="card-text"> {this.props.vacation.description} </p>
