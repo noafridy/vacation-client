@@ -28,10 +28,11 @@ class AddVacation extends Component {
     let obj = { ...this.state };  //... its for only copy and not pointer!
     obj.fromDate = (new Date(obj.fromDate)).toISOString();
     obj.toDate = (new Date(obj.toDate)).toISOString();
-    let from = obj.fromDate.slice(0,10);
-    let to = obj.toDate.slice(0,10);
-    debugger
+     obj.fromDate = obj.fromDate.slice(0,10);
+     obj.toDate = obj.toDate.slice(0,10);
+
     this.props.dispatchInsertVacation(this.state);
+   // debugger
   }
 
   render() {

@@ -62,7 +62,7 @@ class Registration extends Component {
             <input name="password2" onChange={this.handleChng.bind(this)} type="password" className="form-control" placeholder="Please enter your password again" />
             <div id="massage-password"></div>
           </div> */}
-          <button onClick={this.mandatoryFieldChecks.bind(this)} type="button" className="btn btn-primary">Save</button>
+          <button  type="button" className="btn btn-primary">Save</button>
           <div className="form-group"> 
           Already a member?  <Link className="login-link" to="/login"> click here </Link>
           </div>

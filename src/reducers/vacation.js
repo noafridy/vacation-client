@@ -8,6 +8,8 @@ const vacationReducer = (state = [], action) => {  //reducer have state, we can 
 
         case 'GETVACATION':
         case 'ADDVACATION':
+        case 'DELETEVACATION':
+        case 'UPDATEVACATION':
             let newState = action.payload;  //jsonData form fatch
             state = newState;
             return state;

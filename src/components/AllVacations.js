@@ -15,7 +15,6 @@ class AllVacations extends Component {
     return (
       <div className="AllVacations">
         {this.props.allvacation.map(v => <Vacation key={v.ID} vacation={v} />)}
-
       </div>
     );
   }
@@ -32,8 +31,7 @@ const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   }
 };
 
-// const allvacation1 = connect(mapStateToProps, null)(AllVacations);   //null becouse we dont have action in this compn (mapDispatchToProps)
 export default connect(mapStateToProps, mapDispatchToProps)(AllVacations);
-//export default allvacation1;
+
 
 

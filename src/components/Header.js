@@ -29,7 +29,7 @@ class Header extends Component {
                     
                     <Link to="/"><img src="/logo.jpg" /></Link>
                         <div className="header-links">
-                            <span>{`Hello ${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`}</span>
+                            <span className="username-hello">{`Hello ${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`}</span>
                             <a href="/" onClick={this.handleLogout}>Logout</a>  {/* !# סימן מוסכם שלא משנה כתובת */}
                         </div>
                 </React.Fragment>
