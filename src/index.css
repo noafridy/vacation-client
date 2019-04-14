@@ -14,6 +14,27 @@ background-color: #e2e8ed;
   left: 0;
 }
 
+.header-img .link {
+  border: 1px solid #20599a;
+  border-radius: 5px;
+  display: inline-block;
+  width: 180px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: white;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.header-img .link .fas {
+  margin-right: 10px;
+  color: #20599a;
+}
+
+.header-img .link .insert-vaction-link {
+  color: #20599a;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -72,7 +93,7 @@ background-color: #e2e8ed;
 
 .addVacation .Registration-form {
   width: 800px;
-  height: 920px;
+  /* height: 920px; */
   background-color: #ffffff;
   margin-left: auto;
   margin-right: auto;
@@ -82,17 +103,22 @@ background-color: #e2e8ed;
   padding: 30px;
 }
 
-.addVacation .Registration-form h4{
+.addVacation .Registration-form h4 {
   color: #20599a;
 }
 
-.addVacation .Registration-form label{
-display: flex;
-color: #20599a;
+.addVacation .Registration-form label {
+  display: flex;
+  color: #20599a;
 }
 
-.addVacation .Registration-form button{
+.addVacation .Registration-form button {
   width: 100%;
+}
+
+.addVacation .Registration-form .all-vacation-link {
+  margin-top: 20px;
+  color: #20599a;
 }
 
 .Vacation .card {
@@ -104,53 +130,54 @@ color: #20599a;
   border-radius: 5px;
 }
 
-.Vacation .card .delete-edit{
+.Vacation .card .delete-edit {
   cursor: pointer;
   position: absolute;
   right: 5px;
   top: 5px;
 }
 
-.Vacation .card i{
+.Vacation .card i {
   margin-right: 10px;
 }
 
-.Vacation .card .card-img-top{
+.Vacation .card .card-img-top {
   height: 150px;
   width: 300px;
 }
 
-.Vacation .card .card-title{
+.Vacation .card .card-title {
   color: #20599a;
   font-size: 20px;
 }
 
-.Vacation .card .card-text{
+.Vacation .card .card-text {
   /* overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-wrap; */
 }
 
-.Vacation .card .follow{
- border: 1px solid #20599a;
+.Vacation .card .follow {
+  border: 1px solid #20599a;
   border-radius: 5px;
-  width: 90px;
+  width: 110px;
   cursor: pointer;
-  position: absolute;
-  left: 5px;
-  bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
+
 .Vacation .card .follow:hover {
   opacity: 0.7;
 }
 
-.Vacation .card .follow .follow-button{
+.Vacation .card .follow .follow-button {
   color: #20599a;
 }
 
 .AllVacations {
-  display: flex ;
+  display: flex;
   flex-wrap: wrap;
-  margin-top: 215px;
-  
+  margin-top: 30px;
+  justify-content: center;
 }
