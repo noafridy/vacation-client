@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";  //that i can use in router
 import { login } from "../actions"
 import { connect } from "react-redux";
-// import logo from './logo.svg';
-//import './App.css';
 
 class Login extends Component {
   state = {

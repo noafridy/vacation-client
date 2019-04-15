@@ -25,16 +25,9 @@ class AddVacation extends Component {
   }
 
   addVactionToDB() {
-    // let obj = { ...this.state };  //... its for only copy and not pointer!
-    // obj.fromDate = (new Date(obj.fromDate)).toISOString();
-    // obj.toDate = (new Date(obj.toDate)).toISOString();
-    //  obj.fromDate = obj.fromDate.slice(0,10);
-    //  obj.toDate = obj.toDate.slice(0,10);
-
     this.props.dispatchInsertVacation(this.state);
-
     alert("The vacation was updated on the system")
-   // debugger
+
   }
 
   render() {

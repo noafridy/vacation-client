@@ -6,6 +6,7 @@ import { getVacations, myFollow } from "../actions"
 import { Link } from "react-router-dom";
 
 import Vacation from './Vacation';
+import Graph from './Graph';
 
 class AllVacations extends Component {
 
@@ -31,12 +32,21 @@ class AllVacations extends Component {
         }
 
         <div className="AllVacations">
-        {this.props.allvacation.map(v => <Vacation key={v.ID} vacation={v} />)}
-          {/* {this.props.allvacation.filter(v=> v.ID === this.props.followArr.vacation_id).map(v2 =><Vacation key={v2.ID} vacation={v2} />)}    */}
-          
-        
+          {/* {this.props.allvacation.map(v => <Vacation key={v.ID} vacation={v} />)} */}
+
+          {/* מכיל includes its like index of */}
+          {this.props.allvacation.filter(v=> this.props.followArr.includes(v.ID)).map(v2 =><Vacation key={v2.ID} vacation={v2} />)}   
+          {this.props.allvacation.filter(v=> !this.props.followArr.includes(v.ID)).map(v2 =><Vacation key={v2.ID} vacation={v2} />)}   
+
+
         </div>
 
+        {this.checkRol("admin") &&
+        <Graph></Graph>
+          // <div className="line-graph">
+          //   <Link className="insert-graph-link" to="/graph"> Show graph</Link>
+          // </div>
+        }
       </React.Fragment>
     );
   }
@@ -44,9 +54,8 @@ class AllVacations extends Component {
 const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
   return {
     allvacation: state.vacationReducer,   // state.allmovies  is the state of redux, the this.props.allmovies will exsist in this comp also
-    userInfo: state.userReducer
-    // ,
-    // followArr: state.followReducer
+    userInfo: state.userReducer,
+    followArr: state.followReducer
   };
 };
 
