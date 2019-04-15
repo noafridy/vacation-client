@@ -26,6 +26,10 @@ background-color: #e2e8ed;
   cursor: pointer;
 }
 
+.header-img .link:hover {
+  opacity: 0.7;
+}
+
 .header-img .link .fas {
   margin-right: 10px;
   color: #20599a;
@@ -151,10 +155,35 @@ background-color: #e2e8ed;
   font-size: 20px;
 }
 
-.Vacation .card .card-text {
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: pre-wrap; */
+.Vacation .card .card-body-edit {
+  padding: 5px;
+}
+
+.Vacation .card .update-button .save-button {
+  color: #20599a;
+  border: 1px solid #20599a;
+  border-radius: 5px;
+  width: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.Vacation .card .update-button .save-button:hover {
+  opacity: 0.7;
+}
+
+.Vacation .card .update-button .cancel-button {
+  color: #20599a;
+  border: 1px solid #20599a;
+  border-radius: 5px;
+  width: 100px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.Vacation .card .update-button .cancel-button:hover {
+  opacity: 0.7;
 }
 
 .Vacation .card .follow {
@@ -164,7 +193,8 @@ background-color: #e2e8ed;
   cursor: pointer;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  margin-bottom: 20px;
 }
 
 .Vacation .card .follow:hover {
@@ -180,4 +210,17 @@ background-color: #e2e8ed;
   flex-wrap: wrap;
   margin-top: 30px;
   justify-content: center;
+}
+
+/* Graph */
+.graph h3{
+  color: #20599a;
+}
+
+.recharts-wrapper{
+  margin-left: auto;
+  margin-right: auto;
+}
+.recharts-wrapper .recharts-surface{
+  background-color: #ffffff;
 }

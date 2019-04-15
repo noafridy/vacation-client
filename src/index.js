@@ -12,6 +12,7 @@ import Registration from './components/Registration';
 import Login from './components/Login';
 import AllVacation from './components/AllVacations';
 import AddVacation from './components/AddVacation';
+import Graph from './components/Graph';
 
 
 const store = createStore(
@@ -31,8 +32,8 @@ ReactDOM.render(<Provider store={store}>
         <Route exact path="/login/" component={Login} />  {/* to see in url http://localhost:3000/login */}
         <Route exact path="/" component={AllVacation} /> {/* home page -> to see in url http://localhost:3000 */}
         <Route exact path="/addVacation" component={AddVacation} /> 
+        <Route exact path="/graph" component={Graph} />
 
-        
         </Switch>
     </App>
   </Router>

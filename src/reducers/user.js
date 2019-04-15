@@ -10,23 +10,17 @@ const userReducer = (state = getCookie(), action) => {  //reducer have state, we
 
     switch (action.type) {
 
-        case 'REGISTRATIONANDLOGIN':
+        case 'REGISTRATION':
+        case 'LOGIN':
             let newState = action.payload;  //jsonData form fatch
             state = newState;
             return state;
-     
- 
-        //  case 'CHANGE':
-        // let newState = state;
-        // let newObj = {};
-        // newObj[action.data.fieldName] = action.data.fieldValue;
-        // newState.form = Object.assign({}, state.form, newObj);
-        // return { ...state, ...newState }
+
         default:
             return state;
     }
 };
 export default userReducer;
-//export default (userVacationReducer = (state = 0, action) => state)
+
 
 

@@ -17,7 +17,7 @@ export const registration = async data => {
    } else {
       const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
       alert("The registration was successful");
-      return ({ type: "REGISTRATIONANDLOGIN", payload: jsonData });
+      return ({ type: "REGISTRATION", payload: jsonData });
    }
 }
 
@@ -29,7 +29,7 @@ export const login = async data => {
       const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
       alert("Login successfully");
       window.location = "/";
-      return ({ type: "REGISTRATIONANDLOGIN", payload: jsonData });
+      return ({ type: "LOGIN", payload: jsonData });
    } else {
       alert("There is a problem with login, please try again");
    }
@@ -114,7 +114,6 @@ export const updateVacation = async data => {  // data its what i get from react
    } else {
       alert("The vacation was not update, please try again");
    }
-
 }
 
 //**********/ Follow **********//
@@ -162,5 +161,15 @@ export const unFollow = async data => {  // data its what i get from react and s
       return ({ type: "UNFOLLOW", payload: jsonData });
    } else {
       alert("you are still unfollow, Please try again ")
+   }
+}
+
+export const followShowGraph = async data => {
+   const resp = await fetch('http://localhost:3001/vacation/allFollowVacation');//defualt
+   if (resp.status === 200) {
+      const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+      return ({ type: "FOLLOWSHOWGRAPH", payload: jsonData });
+   } else {
+      alert("error");
    }
 }

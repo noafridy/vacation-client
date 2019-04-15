@@ -31,7 +31,10 @@ class AllVacations extends Component {
         }
 
         <div className="AllVacations">
-          {this.props.allvacation.map(v => <Vacation key={v.ID} vacation={v} />)}
+        {this.props.allvacation.map(v => <Vacation key={v.ID} vacation={v} />)}
+          {/* {this.props.allvacation.filter(v=> v.ID === this.props.followArr.vacation_id).map(v2 =><Vacation key={v2.ID} vacation={v2} />)}    */}
+          
+        
         </div>
 
       </React.Fragment>
@@ -42,6 +45,8 @@ const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
   return {
     allvacation: state.vacationReducer,   // state.allmovies  is the state of redux, the this.props.allmovies will exsist in this comp also
     userInfo: state.userReducer
+    // ,
+    // followArr: state.followReducer
   };
 };
 

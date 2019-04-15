@@ -10,7 +10,7 @@ class Vacation extends Component {
   state = {
     isFollow: false,
     edit: false,
-    vacation_id : this.props.vacation.ID || "",
+    vacation_id: this.props.vacation.ID || "",
     img: "",
     destination: this.props.vacation.destination || "",  //מאתחלת בשדה ששיך לכרטיסיה
     description: this.props.vacation.description || "",
@@ -24,7 +24,7 @@ class Vacation extends Component {
   }
 
   updateVacationHandler() {
-    this.setState({ edit: true }); 
+    this.setState({ edit: true });
   }
 
   saveUpdate() {
@@ -36,8 +36,8 @@ class Vacation extends Component {
     this.setState({ [ev.target.name]: ev.target.value });
   }
 
-  cancelUpdate(){
-    this.setState({ edit: false }); 
+  cancelUpdate() {
+    this.setState({ edit: false });
   }
 
   checkRol(rol) {
@@ -49,7 +49,7 @@ class Vacation extends Component {
       username: this.props.userInfo.username,
       vacation_id: this.props.vacation.ID
     })
-    this.setState({ isFollow:true });
+    this.setState({ isFollow: true });
   }
 
   unFollow() {
@@ -95,20 +95,23 @@ class Vacation extends Component {
             </React.Fragment>
           }
 
-          {// to  deit
+          {// admin ->  edit
             this.state.edit &&
             <React.Fragment>
               <img name="img" className="card-img-top" src={`data:image/png;base64,${this.props.vacation.img}`} alt="Card image cap" />
 
-              <div className="card-body">
+              <div className="card-body card-body-edit">
                 <input name="destination" value={this.state.destination} onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert destination" />
                 <input name="description" value={this.state.description} onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert description" />
                 <input name="price" value={this.state.price} onChange={this.handleChange.bind(this)} type="number" className="form-control" placeholder="Please insert price" />
                 <input name="fromDate" value={this.state.fromDate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
                 <input name="toDate" value={this.state.toDate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
               </div>
-              <button className="save" onClick={this.saveUpdate.bind(this)} > Save </button>
-              <button className="save" onClick={this.cancelUpdate.bind(this)}> Cancel </button>
+              <div className="update-button">
+                <button className="save-button" onClick={this.saveUpdate.bind(this)} > Save </button>
+                <button className="cancel-button" onClick={this.cancelUpdate.bind(this)}> Cancel </button>
+              </div>
+
             </React.Fragment>
           }
 
