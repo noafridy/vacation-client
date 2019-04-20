@@ -17,6 +17,7 @@ export const registration = async data => {
    } else {
       const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
       alert("The registration was successful");
+      window.location = "/";
       return ({ type: "REGISTRATION", payload: jsonData });
    }
 }
@@ -96,8 +97,13 @@ export const deleteVacation = async ID => {  // data its what i get from react a
 
 }
 
+export const socketUpdateVecations = vecations => {  // data its what i get from react and send to server
+   alert('vecation list got updated');
+   return ({ type: "SOCKETUPDATEVACATIONS", payload: vecations });
+}
+
 export const updateVacation = async data => {  // data its what i get from react and send to server
-   
+
    const resp = await fetch(`http://localhost:3001/vacation/update/${data.vacation_id}`, {
       method: 'PUT',
       headers: {
@@ -128,7 +134,7 @@ export const follow = async data => {  // data its what i get from react and sen
       , credentials: 'include',   //credentials send the cookie to server
       body: JSON.stringify(data)
    });
-   
+
    if (resp.status === 200) {
       const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
       return ({ type: "FOLLOW", payload: jsonData });
@@ -166,6 +172,7 @@ export const unFollow = async data => {  // data its what i get from react and s
 
 export const followShowGraph = async data => {
    const resp = await fetch('http://localhost:3001/vacation/allFollowVacation');//defualt
+   debugger
    if (resp.status === 200) {
       const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
       return ({ type: "FOLLOWSHOWGRAPH", payload: jsonData });

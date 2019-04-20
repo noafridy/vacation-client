@@ -76,9 +76,10 @@ class Vacation extends Component {
             // (this.props.userInfo.rol === "admin") &&
             this.checkRol("admin") &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
             <div className="delete-edit">
+            {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
               <i className="fas fa-times" onClick={this.deleteVacationHandler.bind(this)} ></i>
               <i className="fas fa-pencil-alt" onClick={this.updateVacationHandler.bind(this)} ></i>
-            </div>
+            </div> 
           }
 
           {
@@ -121,16 +122,16 @@ class Vacation extends Component {
             this.checkRol("user") &&
             <React.Fragment>    {/*  סוג של עטיפה כמו דיב רק שזה לא מתנהג כמו תגית בגלל שהשתמשנו בסימן של וגם */}
               {!this.state.isFollow &&
-                <div className=" follow" >
+                <div className=" follow" onClick={this.addFollow.bind(this)} >
                   <i className="far fa-heart"></i>
-                  <span className="follow-button" onClick={this.addFollow.bind(this)} > Follow </span>
+                  <span className="follow-button" > Follow </span>
                 </div>
               }
 
               {this.state.isFollow &&
-                <div className=" follow" >
-                  <i className="far fa-heart"></i>
-                  <span className="follow-button" onClick={this.unFollow.bind(this)}> Unfollow </span>
+                <div className=" follow" onClick={this.unFollow.bind(this)}>
+                  {/* <i className="far fa-heart"></i> */}
+                  <span className="follow-button"> Unfollow </span>
                 </div>
               }
 

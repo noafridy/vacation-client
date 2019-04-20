@@ -7,17 +7,9 @@ import Login from './components/Login'
 import Registration from './components/Registration';
 import Header from './components/Header';
 import AddVacation from './components/AddVacation';
-import io from 'socket.io-client';  //ספריה של סוקט
-const socket = io('http://localhost:3001');  //מגדירים לאיזה פורט וכתובת מאזינים בשרת
 
 class App extends Component {
 
-  componentDidMount() {
-    socket.emit('event',{name: 'test', value: 10});  // תשדר בתדר של אוונט את האובייקט שיצרנו
-    socket.on('server-message', function(msg){
-      console.log('message: ' + msg);
-    });
-  }
   render() {
     return (
       <div className="App">
@@ -25,7 +17,6 @@ class App extends Component {
         <div className="header-img">
           {this.props.children}
         </div>
-  
       </div>
     );
   }

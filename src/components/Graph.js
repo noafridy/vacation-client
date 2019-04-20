@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { followShowGraph } from "../actions"
+import { Link } from "react-router-dom";
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
@@ -17,6 +18,7 @@ class Graph extends Component {
   }
 
   render() {
+    
     let data = this.props.graphPoints.map(follow => {
       return (
         { name: follow.vacation_id, 'number of followers': follow.followers }
@@ -26,6 +28,15 @@ class Graph extends Component {
     return (
 
       <div className="graph">
+        <React.Fragment>
+          {
+            this.checkRol("admin") &&
+            <div className="link-graph">
+             <i class="fas fa-angle-double-left"></i>
+              <Link className="graph-vaction-link" to="/"> Back To All Vacation</Link>
+            </div>
+          }
+        </React.Fragment>
         {
           this.checkRol("admin") &&
           <React.Fragment>
