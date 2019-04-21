@@ -11,7 +11,7 @@ class Vacation extends Component {
     isFollow: false,
     edit: false,
     vacation_id: this.props.vacation.ID || "",
-    img: "",
+    img: this.props.vacation.img || "",
     destination: this.props.vacation.destination || "",  //מאתחלת בשדה ששיך לכרטיסיה
     description: this.props.vacation.description || "",
     price: this.props.vacation.price || "",
@@ -34,6 +34,20 @@ class Vacation extends Component {
 
   handleChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
+  }
+
+  saveAsBase64(event) {
+    const that = this;
+    var file = Array.from(event.target.files)[0];
+    var reader = new FileReader();
+    reader.onload = function () {
+      const img = btoa(reader.result); // conversion to base64
+      that.setState({ img });
+    };
+    reader.onerror = function () {
+      console.log('there are some problems');
+    };
+    reader.readAsBinaryString(file); //read file in binary format
   }
 
   cancelUpdate() {
@@ -76,10 +90,10 @@ class Vacation extends Component {
             // (this.props.userInfo.rol === "admin") &&
             this.checkRol("admin") &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
             <div className="delete-edit">
-            {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
+              {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
               <i className="fas fa-times" onClick={this.deleteVacationHandler.bind(this)} ></i>
               <i className="fas fa-pencil-alt" onClick={this.updateVacationHandler.bind(this)} ></i>
-            </div> 
+            </div>
           }
 
           {
@@ -99,9 +113,10 @@ class Vacation extends Component {
           {// admin ->  edit
             this.state.edit &&
             <React.Fragment>
-              <img name="img" className="card-img-top" src={`data:image/png;base64,${this.props.vacation.img}`} alt="Card image cap" />
+              <img name="img" className="card-img-top" src={`data:image/png;base64,${this.state.img}`} alt="Card image cap" />
 
               <div className="card-body card-body-edit">
+                <input name="img" onChange={this.saveAsBase64.bind(this)} type='file' accept="image/*" className="form-control-file" />
                 <input name="destination" value={this.state.destination} onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert destination" />
                 <input name="description" value={this.state.description} onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert description" />
                 <input name="price" value={this.state.price} onChange={this.handleChange.bind(this)} type="number" className="form-control" placeholder="Please insert price" />

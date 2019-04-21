@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import { addVacation } from "../actions"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { stat } from 'fs';
 class AddVacation extends Component {
+  state={
+    destination:""
+  }
   handleChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
   }
 
-  uploadFileToServer(event) {
+  saveAsBase64(event) {
     const that = this;
     var file = Array.from(event.target.files)[0];
-    // console.log(file);
     var reader = new FileReader();
-
     reader.onload = function () {
       const img = btoa(reader.result); // conversion to base64
-      // console.log(img);
       that.setState({ img });
     };
     reader.onerror = function () {
@@ -25,9 +26,18 @@ class AddVacation extends Component {
   }
 
   addVactionToDB() {
-    this.props.dispatchInsertVacation(this.state);
+    debugger
+    const stateBackUp = {...this.state} ;
+    this.props.dispatchInsertVacation(stateBackUp);
     alert("The vacation was updated on the system")
-
+    this.setState({
+      destination:"",
+      description:"",
+      price:"",
+      img:"",
+      fromDate:"",
+      toDate:""
+    })
   }
 
   render() {
@@ -37,7 +47,7 @@ class AddVacation extends Component {
         <form className="Registration-form">
           <h4>Insert vacation</h4><br />
           <div className="form-group">
-            <input name="destination" onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert destination" />
+            <input name="destination" value={this.state.destination}  onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert destination" />
           </div>
           <div className="form-group">
             <input name="description" onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert description" />
@@ -47,7 +57,7 @@ class AddVacation extends Component {
           </div>
           <div className="form-group">
             <label >Please insert img</label>
-            <input name="img" onChange={this.uploadFileToServer.bind(this)} type='file' accept="image/*" className="form-control-file" />
+            <input name="img" onChange={this.saveAsBase64.bind(this)} type='file' accept="image/*" className="form-control-file" />
             {(this.state && this.state.base64IFile !== null) && <img src={`data:image/png;base64, ${this.state.img}`} alt="image for upload" />}
           </div>
 
@@ -60,12 +70,12 @@ class AddVacation extends Component {
             <input name="toDate" onChange={this.handleChange.bind(this)} type="date" className="form-control" />
           </div>
 
-          <button type="button" className="btn btn-primary" onClick={this.addVactionToDB.bind(this)}>Save</button> 
-          
+          <button type="button" className="btn btn-primary" onClick={this.addVactionToDB.bind(this)}>Save</button>
+
           <Link className="all-vacation-link" to="/"> Back to all vacation</Link>
         </form>
 
-      
+
       </div>
     );
   }

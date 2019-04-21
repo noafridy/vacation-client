@@ -117,6 +117,10 @@ background-color: #e2e8ed;
   color: #20599a;
 }
 
+.addVacation .Registration-form img{
+  width: 100%;
+}
+
 .addVacation .Registration-form button {
   width: 100%;
 }
@@ -128,7 +132,7 @@ background-color: #e2e8ed;
 
 .Vacation .card {
   width: 300px;
-  height: 400px;
+  min-height: 400px;
   margin-left: 20px;
   margin-top: 20px;
   border: 1px solid #20599a;
@@ -167,6 +171,7 @@ background-color: #e2e8ed;
 }
 .Vacation .card .card-text:hover{
   overflow: visible;
+  white-space: pre-wrap;
 }
 
 .Vacation .card .card-body-edit {
