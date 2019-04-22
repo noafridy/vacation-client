@@ -75,7 +75,7 @@ const mapStateToProps = (state) => {   //mapStateToProps בסטייט יש את 
 
 const mapDispatchToProps = (dispatch) => {     //mapDispatchToProps כדי לקבל את האניפורמציה לבנית הגרף מהנק קצה
   return {
-    dispatchFollowGraph: async () => dispatch(await followShowGraph())
+    dispatchFollowGraph:() => dispatch(followShowGraph())
   }
 };
 

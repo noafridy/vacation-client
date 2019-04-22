@@ -95,9 +95,9 @@ const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    dispatchGetVacations: async (data) => dispatch(await getVacations(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-    dispatchSocketUpdateVecations: async (data) => dispatch(await socketUpdateVecations(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-    dispatchMyFollows: async (data) => dispatch(await myFollow(data))
+    dispatchGetVacations: () => dispatch(getVacations()),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchSocketUpdateVecations: (data) => dispatch(socketUpdateVecations(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchMyFollows: (data) => dispatch( myFollow(data))
   }
 };
 

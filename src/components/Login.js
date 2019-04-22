@@ -54,7 +54,9 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    dispatchLogin: async (data) => dispatch(await login(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    // dispatchLogin: async (data) => dispatch(await login(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchLogin:(data) => dispatch(login(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+
   }
 };
 

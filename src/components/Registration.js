@@ -32,7 +32,6 @@ class Registration extends Component {
     } else {
       this.props.dispatchregistration(this.state);
     }
-
   }
 
   render() {
@@ -72,7 +71,9 @@ class Registration extends Component {
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    dispatchregistration: async (data) => dispatch(await registration(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    // dispatchregistration: async (data) => dispatch(await registration(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchregistration:(data) => dispatch(registration(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+
   }
 };
 

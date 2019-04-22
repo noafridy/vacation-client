@@ -168,10 +168,14 @@ const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    dispatchDeleteVacation: async (data) => dispatch(await deleteVacation(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-    dispatchFollow: async (data) => dispatch(await follow(data)),  //follow its from action
-    dispatchUnFollow: async (data) => dispatch(await unFollow(data)),
-    dispatchUpdate: async (data) => dispatch(await updateVacation(data))
+    // dispatchDeleteVacation: async (data) => dispatch(await deleteVacation(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchDeleteVacation:(data) => dispatch(deleteVacation(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    // dispatchFollow: async (data) => dispatch(await follow(data)),  //follow its from action
+    dispatchFollow:(data) => dispatch(follow(data)),  //follow its from action
+    // dispatchUnFollow: async (data) => dispatch(await unFollow(data)),
+    dispatchUnFollow:(data) => dispatch(unFollow(data)),
+    // dispatchUpdate: async (data) => dispatch(await updateVacation(data))
+    dispatchUpdate:(data) => dispatch(updateVacation(data))
   }
 };
 

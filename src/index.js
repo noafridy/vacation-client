@@ -5,7 +5,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, createStore, compose } from "redux";
+import ReduxThunk from 'redux-thunk'
 import rootReducer from "./reducers";    //import index.js if we don't specify file
 import { Provider } from "react-redux";
 import Registration from './components/Registration';
@@ -14,10 +15,12 @@ import AllVacation from './components/AllVacations';
 import AddVacation from './components/AddVacation';
 import Graph from './components/Graph';
 
+const composeEnhancer = (typeof window === 'object' && typeof window.devToolsExtension !== "undefined") ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancer(applyMiddleware(ReduxThunk))
+
 );
 
 //const store = createStore(userReducer,composeWithDevTools()); //need to change the Reducer name
