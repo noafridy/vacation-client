@@ -238,7 +238,7 @@ export const myFollow = username => {
       const resp = await fetch(`http://localhost:3001/vacation/myFollow/${username}`);//defualt
       if (resp.status === 200) {
          const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
-         return dispatch({ type: "MYFOLLOW", payload: jsonData });
+         dispatch({ type: "MYFOLLOW", payload: jsonData });
       } else {
          alert("error");
       }
