@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Vacation from './Vacation';
 import io from 'socket.io-client';  //ספריה של סוקט
 const socket = io('http://localhost:3001');  //מגדירים לאיזה פורט וכתובת מאזינים בשרת
-// import Graph from './Graph';
 
 class AllVacations extends Component {
 
@@ -52,14 +51,14 @@ class AllVacations extends Component {
         }
         <div className="AllVacations">
         {(!this.checkRol("user") && !this.checkRol("admin")) && 
-          <h3 className="title">All Vacation </h3>}
+          <h3 className="title firstTitle">All Vacation </h3>}
 
           {/*  includes its like index of */}
           {/* <div className="followCards"> */}
           {/* <div className="row title">   </div>*/}
           {this.checkRol("user") &&
             <React.Fragment>
-              <h3 className="title">My Favorite Vacation <span>({this.props.followArr.length})</span></h3>
+              <h3 className="title firstTitle">My Favorite Vacation <span>({this.props.followArr.length})</span></h3>
               <div className="row">
                 {this.props.allvacation.filter(v => this.props.followArr.includes(v.ID)).map(v2 => <Vacation key={v2.ID} vacation={v2} />)}
               </div>

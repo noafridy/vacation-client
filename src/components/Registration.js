@@ -37,7 +37,6 @@ class Registration extends Component {
   render() {
     return (
       <div className="registration">
-
         <form className="Registration-form">
           <h4 id="Registration-title">Registration</h4><br />
           <div className="form-group">
@@ -62,8 +61,6 @@ class Registration extends Component {
           Already a member?  <Link className="login-link" to="/login"> click here </Link>
           </div>
         </form>
-
-
       </div>
     );
   }

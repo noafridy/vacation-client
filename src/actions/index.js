@@ -120,6 +120,7 @@ export const addVacation = data => {  // data its what i get from react and send
       //defualt
       if (resp.status === 200) {
          const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         alert("The vacation was added");
          dispatch({ type: "ADDVACATION", payload: jsonData });
       } else {
          alert("The vacation was not added");

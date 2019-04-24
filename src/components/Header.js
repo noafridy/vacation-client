@@ -17,7 +17,7 @@ class Header extends Component {
                 {/* דרך נוספת ל איף */}
                 {!this.props.userInfo && 
                     <React.Fragment>  {/* יוצר דיו עוטף בלי המילה דיו */}
-                        <Link to="/"><img src="/logo.jpg" /></Link>
+                        <img src="/logo.jpg" />
                         <div className="header-links">
                             <Link to="/login">Login</Link>
                             <Link to="/registration">Join</Link>
