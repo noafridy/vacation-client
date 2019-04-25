@@ -5,14 +5,16 @@ import { connect } from "react-redux"; //אם נרצה גישה לכל מה שק
 import { getVacations, socketUpdateVecations, myFollow } from "../actions"
 import { Link } from "react-router-dom";
 import Vacation from './Vacation';
-import io from 'socket.io-client';  //ספריה של סוקט
+import io from 'socket.io-client'; 
+import {checkRol} from "../functions";
+ //ספריה של סוקט
 const socket = io('http://localhost:3001');  //מגדירים לאיזה פורט וכתובת מאזינים בשרת
 
 class AllVacations extends Component {
 
-  checkRol(rol) {
-    return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  }
+  // checkRol(rol) {
+  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
+  // }
 
   componentDidMount() {
     this.props.dispatchGetVacations();
@@ -37,26 +39,26 @@ class AllVacations extends Component {
     return (
       <React.Fragment >
 
-        {this.checkRol("admin") &&
+        {checkRol("admin",this.props.userInfo)  &&
           <div className="link">
             <i className="fas fa-plus"></i>
             <Link className="insert-vaction-link" to="/addVacation"> Add New Vacation</Link>
           </div>
         }
-        {this.checkRol("admin") &&
+        {checkRol("admin",this.props.userInfo) &&
           <div className="link">
             <i className="fas fa-chart-bar"></i>
             <Link className="insert-vaction-link" to="/graph"> Show Graph</Link>
           </div>
         }
         <div className="AllVacations">
-        {(!this.checkRol("user") && !this.checkRol("admin")) && 
+        {(!checkRol("user",this.props.userInfo) && !checkRol("admin",this.props.userInfo)) && 
           <h3 className="title firstTitle">All Vacation </h3>}
 
           {/*  includes its like index of */}
           {/* <div className="followCards"> */}
           {/* <div className="row title">   </div>*/}
-          {this.checkRol("user") &&
+          {checkRol("user",this.props.userInfo) &&
             <React.Fragment>
               <h3 className="title firstTitle">My Favorite Vacation <span>({this.props.followArr.length})</span></h3>
               <div className="row">
@@ -67,7 +69,7 @@ class AllVacations extends Component {
           {/* </div> */}
           {/* <div className="unfollowCards"  > */}
           {/* <div className="row title"> </div>*/}
-          {this.checkRol("user") && <h3 className="title">Vacations That I Don't Follow <span>({this.props.allvacation.length - this.props.followArr.length})</span></h3>}
+          {checkRol("user",this.props.userInfo) && <h3 className="title">Vacations That I Don't Follow <span>({this.props.allvacation.length - this.props.followArr.length})</span></h3>}
           <div className="row">
             {this.props.allvacation.filter(v => !this.props.followArr.includes(v.ID)).map(v2 => <Vacation key={v2.ID} vacation={v2} />)}
           </div>

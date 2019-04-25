@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { followShowGraph } from "../actions"
 import { Link } from "react-router-dom";
+import {checkRol} from "../functions";
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
@@ -13,9 +14,9 @@ class Graph extends Component {
     this.props.dispatchFollowGraph();
   }
 
-  checkRol(rol) {
-    return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  }
+  // checkRol(rol) {
+  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
+  // }
 
   render() {
     
@@ -30,7 +31,7 @@ class Graph extends Component {
       <div className="graph">
         <React.Fragment>
           {
-            this.checkRol("admin") &&
+            checkRol("admin",this.props.userInfo) &&
             <div className="link-graph">
              <i class="fas fa-angle-double-left"></i>
               <Link className="graph-vaction-link" to="/"> Back To All Vacation</Link>
@@ -38,7 +39,7 @@ class Graph extends Component {
           }
         </React.Fragment>
         {
-          this.checkRol("admin") &&
+         checkRol("admin",this.props.userInfo) &&
           <React.Fragment>
             <h3> number of followers by vacation id</h3>
             <BarChart

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-//import './App.css';
 import { connect } from "react-redux"; //אם נרצה גישה לכל מה שקשור לרידקס נוסיף את הקונקט
 import { deleteVacation, follow, unFollow, updateVacation } from "../actions"
-
+import {checkRol} from "../functions";
 // import { stat } from 'fs';
 
 class Vacation extends Component {
@@ -54,9 +52,9 @@ class Vacation extends Component {
     this.setState({ edit: false });
   }
 
-  checkRol(rol) {
-    return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  }
+  // checkRol(rol) {
+  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
+  // }
 
   addFollow() {
     this.props.dispatchFollow({
@@ -88,7 +86,7 @@ class Vacation extends Component {
           {/* for admin */}
           {
             // (this.props.userInfo.rol === "admin") &&
-            this.checkRol("admin") &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
+            checkRol("admin",this.props.userInfo) &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
             <div className="delete-edit">
               {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
               <i className="fas fa-times" onClick={this.deleteVacationHandler.bind(this)} ></i>
@@ -134,7 +132,7 @@ class Vacation extends Component {
           {/* for user */}
           {
             // (this.props.userInfo.rol === "user") &&
-            this.checkRol("user") &&
+            checkRol("user",this.props.userInfo) &&
             <React.Fragment>    {/*  סוג של עטיפה כמו דיב רק שזה לא מתנהג כמו תגית בגלל שהשתמשנו בסימן של וגם */}
               {!this.state.isFollow &&
                 <div className=" follow" onClick={this.addFollow.bind(this)} >

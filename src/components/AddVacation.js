@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { addVacation } from "../actions"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import {checkRol} from "../functions";
 class AddVacation extends Component {
 
   constructor(props) {
@@ -18,9 +19,9 @@ class AddVacation extends Component {
     toDate: ""
   }
 
-  checkRol(rol) {
-    return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  }
+  // checkRol(rol) {
+  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
+  // }
 
   handleChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
@@ -94,7 +95,7 @@ class AddVacation extends Component {
   render() {
     return (
       <div className="addVacation">
-        {this.checkRol("admin") &&
+        {checkRol("admin",this.props.userInfo) &&
           <form className="Registration-form">
             <h4>Insert vacation</h4><br />
             <div className="form-group">
