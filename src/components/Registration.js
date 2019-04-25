@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";  //that i can use in router
-// import logo from './logo.svg';
-//import './App.css';
 import { registration } from "../actions"
 import { connect } from "react-redux";
 
@@ -36,7 +34,7 @@ class Registration extends Component {
 
   render() {
     return (
-      <div className="registration">
+      <div className="registration page-img">
         <form className="Registration-form">
           <h4 id="Registration-title">Registration</h4><br />
           <div className="form-group">
@@ -68,13 +66,10 @@ class Registration extends Component {
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    // dispatchregistration: async (data) => dispatch(await registration(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
     dispatchregistration:(data) => dispatch(registration(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-
   }
 };
 
-// const allvacation1 = connect(mapStateToProps, null)(AllVacations);   //null becouse we dont have action in this compn (mapDispatchToProps)
 export default connect(null, mapDispatchToProps)(Registration);
 
 

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";  //that i can use in router
 import { connect } from "react-redux";

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux"; //אם נרצה גישה לכל מה שקשור לרידקס נוסיף את הקונקט
 import { deleteVacation, follow, unFollow, updateVacation } from "../actions"
 import {checkRol} from "../functions";
-// import { stat } from 'fs';
 
 class Vacation extends Component {
   state = {
@@ -52,10 +51,6 @@ class Vacation extends Component {
     this.setState({ edit: false });
   }
 
-  // checkRol(rol) {
-  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  // }
-
   addFollow() {
     this.props.dispatchFollow({
       username: this.props.userInfo.username,
@@ -83,15 +78,16 @@ class Vacation extends Component {
       <div className="Vacation">
 
         <div className="card">
-          {/* for admin */}
           {
-            // (this.props.userInfo.rol === "admin") &&
             checkRol("admin",this.props.userInfo) &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
+            <React.Fragment> 
             <div className="delete-edit">
               {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
               <i className="fas fa-times" onClick={this.deleteVacationHandler.bind(this)} ></i>
               <i className="fas fa-pencil-alt" onClick={this.updateVacationHandler.bind(this)} ></i>
             </div>
+             <i className="vacation-id"> ID: {this.props.vacation.ID}</i>
+             </React.Fragment>
           }
 
           {
@@ -129,9 +125,7 @@ class Vacation extends Component {
             </React.Fragment>
           }
 
-          {/* for user */}
           {
-            // (this.props.userInfo.rol === "user") &&
             checkRol("user",this.props.userInfo) &&
             <React.Fragment>    {/*  סוג של עטיפה כמו דיב רק שזה לא מתנהג כמו תגית בגלל שהשתמשנו בסימן של וגם */}
               {!this.state.isFollow &&
@@ -143,7 +137,6 @@ class Vacation extends Component {
 
               {this.state.isFollow &&
                 <div className=" follow" onClick={this.unFollow.bind(this)}>
-                  {/* <i className="far fa-heart"></i> */}
                   <span className="follow-button"> Unfollow </span>
                 </div>
               }
@@ -166,13 +159,9 @@ const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    // dispatchDeleteVacation: async (data) => dispatch(await deleteVacation(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
     dispatchDeleteVacation:(data) => dispatch(deleteVacation(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-    // dispatchFollow: async (data) => dispatch(await follow(data)),  //follow its from action
     dispatchFollow:(data) => dispatch(follow(data)),  //follow its from action
-    // dispatchUnFollow: async (data) => dispatch(await unFollow(data)),
     dispatchUnFollow:(data) => dispatch(unFollow(data)),
-    // dispatchUpdate: async (data) => dispatch(await updateVacation(data))
     dispatchUpdate:(data) => dispatch(updateVacation(data))
   }
 };

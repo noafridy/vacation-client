@@ -19,10 +19,6 @@ class AddVacation extends Component {
     toDate: ""
   }
 
-  // checkRol(rol) {
-  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  // }
-
   handleChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
   }
@@ -58,9 +54,7 @@ class AddVacation extends Component {
     } else if (!this.state.toDate) {
       window.alert("Plese insert toDate");
     } else {
-      // this.props.addVactionToDB(this.state);
-
-      //addVactionToDB
+      //add Vaction To DB
       const backup = {...this.state};
       this.props.dispatchInsertVacation(backup);
 
@@ -77,20 +71,6 @@ class AddVacation extends Component {
       this.fileUpload.current.value = null
     }
   }
-
-  // addVactionToDB() {
-  //   const stateBackUp = {...this.state} ;
-  //   this.props.dispatchInsertVacation(stateBackUp);
-  //   // alert("The vacation was updated on the system")
-  //   this.setState({
-  //     destination:"",
-  //     description:"",
-  //     price:"",
-  //     img:"",
-  //     fromDate:"",
-  //     toDate:""
-  //   })
-  // }
 
   render() {
     return (
@@ -146,6 +126,5 @@ const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   }
 };
 
-// const allvacation1 = connect(mapStateToProps, null)(AllVacations);   //null becouse we dont have action in this compn (mapDispatchToProps)
 export default connect(mapStateToProps, mapDispatchToProps)(AddVacation);
 

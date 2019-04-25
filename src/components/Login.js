@@ -26,7 +26,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="Login">
+      <div className="Login page-img">
 
         <form className="login-form">
         <h4 id="login-title">Login</h4><br/>
@@ -35,13 +35,11 @@ class Login extends Component {
           </div>
           <div className="form-group">
             <input type="password" name="password" onChange={this.handleChange.bind(this)} className="form-control" id="passwordid" placeholder="Enter your password" />
-            {/* <small id="emailHelp" className="form-text text-muted">Please enter no more than eight characters </small> */}
           </div>
           <button type="button" className="btn btn-primary" onClick={this.mandatoryFieldChecks.bind(this)}>Continue</button> 
           <div className="endForm"><br/>
           <div className="form-group">
           Not a member yet?<Link className="login-link" to="/registration"> Join now</Link> 
-            {/* the link below to react-router and becouse we do the import we can use and now tha page is not refures alse it one page application */}
           </div>
           </div>
         </form>
@@ -54,9 +52,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
   return {
-    // dispatchLogin: async (data) => dispatch(await login(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
     dispatchLogin:(data) => dispatch(login(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-
   }
 };
 

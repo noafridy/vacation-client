@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { followShowGraph } from "../actions"
@@ -14,10 +13,6 @@ class Graph extends Component {
     this.props.dispatchFollowGraph();
   }
 
-  // checkRol(rol) {
-  //   return ((this.props.userInfo) && (this.props.userInfo.rol === rol))
-  // }
-
   render() {
     
     let data = this.props.graphPoints.map(follow => {
@@ -28,7 +23,7 @@ class Graph extends Component {
 
     return (
 
-      <div className="graph">
+      <div className="graph page-img">
         <React.Fragment>
           {
             checkRol("admin",this.props.userInfo) &&
@@ -47,7 +42,7 @@ class Graph extends Component {
               height={300}
               data={data}
               margin={{
-                top: 5, right: 30, left: 20, bottom: 5,
+                top: 30, right: 30, left: 20, bottom: 20,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />

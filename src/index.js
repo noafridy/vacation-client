@@ -18,7 +18,6 @@ import Graph from './components/Graph';
 const composeEnhancer = (typeof window === 'object' && typeof window.devToolsExtension !== "undefined") ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 function isLoggedIn() {      // יצרתי פונקציה שתפנה לקוקי ותבדוק האם המשתמש מחובר אם לא יוצא לוגין אם כן יוצג חופשות
   const userInfo = document.cookie ? JSON.parse(decodeURIComponent(document.cookie).split('=')[1]) : null;
-  debugger;
   return (userInfo !== null);
 }
 const store = createStore(
