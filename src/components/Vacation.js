@@ -73,7 +73,10 @@ class Vacation extends Component {
     }
   }
 
+
   render() {
+    const todate = this.props.vacation.toDate.split('-').reverse().join('-');
+    const fromdate = this.props.vacation.fromDate.split('-').reverse().join('-');
     return (
       <div className="Vacation">
 
@@ -98,8 +101,8 @@ class Vacation extends Component {
                 <h6 name="destination" className="card-title">{this.props.vacation.destination}</h6>
                 <p name="description" className="card-text"> {this.props.vacation.description} </p>
                 <h5 name="price" className="card-price"> {this.props.vacation.price} </h5>
-                <div name="fromDate" > {this.props.vacation.fromDate} </div>
-                <div name="toDate"> {this.props.vacation.toDate} </div>
+                <div name="fromDate" > {fromdate} </div>
+                <div name="toDate"> {todate} </div>
               </div>
             </React.Fragment>
           }
