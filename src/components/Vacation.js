@@ -74,8 +74,8 @@ class Vacation extends Component {
   }
 
   render() {
-    const todate = this.state.todate.split('-').reverse().join('-');
-    const fromdate = this.state.fromdate.split('-').reverse().join('-');
+    const todate = this.props.vacation.todate.split('-').reverse().join('-');
+    const fromdate = this.props.vacation.fromdate.split('-').reverse().join('-');
     return (
       <div className="Vacation">
 
