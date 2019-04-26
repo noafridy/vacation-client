@@ -15,8 +15,8 @@ class AddVacation extends Component {
     description: "",
     price: "",
     img:"",
-    fromDate: "",
-    toDate: ""
+    fromdate: "",
+    todate: ""
   }
 
   handleChange(ev) {
@@ -49,10 +49,10 @@ class AddVacation extends Component {
       window.alert("Plese insert price");
     } else if (!this.state.img) {
       window.alert("Plese insert img");
-    } else if (!this.state.fromDate) {
-      window.alert("Plese insert fromDate");
-    } else if (!this.state.toDate) {
-      window.alert("Plese insert toDate");
+    } else if (!this.state.fromdate) {
+      window.alert("Plese insert fromdate");
+    } else if (!this.state.todate) {
+      window.alert("Plese insert todate");
     } else {
       //add Vaction To DB
       const backup = {...this.state};
@@ -63,8 +63,8 @@ class AddVacation extends Component {
         description: "",
         price: "",
         img: "",
-        fromDate: "",
-        toDate: ""
+        fromdate: "",
+        todate: ""
       })
 
       // clear the file in the file input
@@ -95,11 +95,11 @@ class AddVacation extends Component {
 
             <div className="form-group">
               <label >Please insert start date</label>
-              <input name="fromDate" value={this.state.fromDate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
+              <input name="fromdate" value={this.state.fromdate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
             </div>
             <div className="form-group">
               <label >Please insert end date</label>
-              <input name="toDate" value={this.state.toDate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
+              <input name="todate" value={this.state.todate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
             </div>
 
             <button type="button" className="btn btn-primary" onClick={this.mandatoryFieldChecks.bind(this)}>Save</button>

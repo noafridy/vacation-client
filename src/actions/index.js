@@ -2,7 +2,7 @@
 
 export const registration = data => {
    return async dispatch => {
-      const resp = await fetch('http://localhost:3001/user/add', {
+      const resp = await fetch('/user/add', {
          method: 'POST',
          headers: {
             'Accept': 'application/json',
@@ -26,7 +26,7 @@ export const registration = data => {
 
 export const login = data => {
    return async dispatch => {
-      const resp = await fetch(`http://localhost:3001/user/${data.username}/${data.password}`, {
+      const resp = await fetch(`/user/${data.username}/${data.password}`, {
          credentials: 'include'    //כדי שנוכל לקבל את הקוקי כחלק מהתשובה מהשרת
       });
       if (resp.status === 200) {
@@ -44,7 +44,7 @@ export const login = data => {
 
 export const getVacations = () => {
    return async dispatch => {
-      const resp = await fetch('http://localhost:3001/vacation/all');//defualt
+      const resp = await fetch('/vacation/all');//defualt
       if (resp.status === 200) {
          const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
          dispatch({ type: "GETVACATION", payload: jsonData });
@@ -56,7 +56,7 @@ export const getVacations = () => {
 
 export const addVacation = data => {  // data its what i get from react and send to server
    return async dispatch => {
-      const resp = await fetch('http://localhost:3001/vacation/add', {
+      const resp = await fetch('/vacation/add', {
          method: 'POST',
          headers: {
             'Accept': 'application/json',
@@ -76,9 +76,9 @@ export const addVacation = data => {  // data its what i get from react and send
    }
 }
 
-export const deleteVacation = ID => {  // data its what i get from react and send to server
+export const deleteVacation = id => {  // data its what i get from react and send to server
    return async dispatch => {
-   const resp = await fetch(`http://localhost:3001/vacation/${ID}`, {
+   const resp = await fetch(`/vacation/${id}`, {
       method: 'DELETE',
       headers: {
          'Accept': 'application/json',
@@ -104,7 +104,7 @@ export const socketUpdateVecations = vecations => {  // data its what i get from
 
 export const updateVacation = data => {  // data its what i get from react and send to server
    return async dispatch => {
-   const resp = await fetch(`http://localhost:3001/vacation/update/${data.vacation_id}`, {
+   const resp = await fetch(`/vacation/update/${data.vacation_id}`, {
       method: 'PUT',
       headers: {
          'Accept': 'application/json',
@@ -126,7 +126,7 @@ export const updateVacation = data => {  // data its what i get from react and s
 
 export const follow = data => {  // data its what i get from react and send to server
    return async dispatch => {
-   const resp = await fetch(`http://localhost:3001/vacation/follow`, {
+   const resp = await fetch(`/vacation/follow`, {
       method: 'POST',
       headers: {
          'Accept': 'application/json',
@@ -147,7 +147,7 @@ export const follow = data => {  // data its what i get from react and send to s
 
 export const myFollow = username => {
    return async dispatch => {
-      const resp = await fetch(`http://localhost:3001/vacation/myFollow/${username}`);//defualt
+      const resp = await fetch(`/vacation/myFollow/${username}`);//defualt
       if (resp.status === 200) {
          const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
          dispatch({ type: "MYFOLLOW", payload: jsonData });
@@ -159,7 +159,7 @@ export const myFollow = username => {
 
 export const unFollow = data => {  // data its what i get from react and send to server
    return async dispatch => {
-   const resp = await fetch(`http://localhost:3001/vacation//unFollw/${data.vacation_id}/${data.username}`, {
+   const resp = await fetch(`/vacation//unFollw/${data.vacation_id}/${data.username}`, {
       method: 'DELETE',
       headers: {
          'Accept': 'application/json',
@@ -178,7 +178,7 @@ export const unFollow = data => {  // data its what i get from react and send to
 
 export const followShowGraph = () => {
    return async dispatch => {
-      const resp = await fetch('http://localhost:3001/vacation/allFollowVacation');//defualt
+      const resp = await fetch('/vacation/allFollowVacation');//defualt
       if (resp.status === 200) {
          const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
          dispatch({ type: "FOLLOWSHOWGRAPH", payload: jsonData });

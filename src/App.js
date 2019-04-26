@@ -4,7 +4,7 @@ import Header from './components/Header';
 import { connect } from "react-redux";
 import {socketUpdateVecations} from "./actions"
 import io from 'socket.io-client';
-const socket = io('http://localhost:3001');  //מגדירים לאיזה פורט וכתובת מאזינים בשרת
+const socket = io('https://app-vacation.herokuapp.com');  //מגדירים לאיזה פורט וכתובת מאזינים בשרת
 class App extends Component {
 
   constructor(props) {

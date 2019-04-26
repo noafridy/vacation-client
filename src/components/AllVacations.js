@@ -16,7 +16,20 @@ class AllVacations extends Component {
 
   render() {
     if (this.props.allvacation.length === 0) {
-      return (<div></div>);
+      return (<div>
+        {checkRol("admin", this.props.userInfo) &&
+          <div className="link">
+            <i className="fas fa-plus"></i>
+            <Link className="insert-vaction-link" to="/addVacation"> Add New Vacation</Link>
+          </div>
+        }
+        {checkRol("admin", this.props.userInfo) &&
+          <div className="link">
+            <i className="fas fa-chart-bar"></i>
+            <Link className="insert-vaction-link" to="/graph"> Show Graph</Link>
+          </div>
+        }
+      </div>);
     }
 
     return (
@@ -42,14 +55,14 @@ class AllVacations extends Component {
             <React.Fragment>
               <h3 className="title firstTitle">My Favorite Vacation <span>({this.props.followArr.length})</span></h3>
               <div className="row">
-                {this.props.allvacation.filter(v => this.props.followArr.includes(v.ID)).map(v2 => <Vacation key={v2.ID} vacation={v2} />)}
+                {this.props.allvacation.filter(v => this.props.followArr.includes(v.id)).map(v2 => <Vacation key={v2.id} vacation={v2} />)}
               </div>
             </React.Fragment>
           }
 
           {checkRol("user", this.props.userInfo) && <h3 className="title">Vacations That I Don't Follow <span>({this.props.allvacation.length - this.props.followArr.length})</span></h3>}
           <div className="row">
-            {this.props.allvacation.filter(v => !this.props.followArr.includes(v.ID)).map(v2 => <Vacation key={v2.ID} vacation={v2} />)}
+            {this.props.allvacation.filter(v => !this.props.followArr.includes(v.id)).map(v2 => <Vacation key={v2.id} vacation={v2} />)}
           </div>
 
         </div>

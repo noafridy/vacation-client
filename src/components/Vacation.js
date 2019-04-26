@@ -7,17 +7,17 @@ class Vacation extends Component {
   state = {
     isFollow: false,
     edit: false,
-    vacation_id: this.props.vacation.ID || "",
+    vacation_id: this.props.vacation.id || "",
     img: this.props.vacation.img || "",
     destination: this.props.vacation.destination || "",  //מאתחלת בשדה ששיך לכרטיסיה
     description: this.props.vacation.description || "",
     price: this.props.vacation.price || "",
-    fromDate: this.props.vacation.fromDate || "",
-    toDate: this.props.vacation.toDate || ""
+    fromdate: this.props.vacation.fromdate || "",
+    todate: this.props.vacation.todate || ""
   }
 
   deleteVacationHandler() {
-    this.props.dispatchDeleteVacation(this.props.vacation.ID);
+    this.props.dispatchDeleteVacation(this.props.vacation.id);
   }
 
   updateVacationHandler() {
@@ -54,7 +54,7 @@ class Vacation extends Component {
   addFollow() {
     this.props.dispatchFollow({
       username: this.props.userInfo.username,
-      vacation_id: this.props.vacation.ID
+      vacation_id: this.props.vacation.id
     })
     this.setState({ isFollow: true });
   }
@@ -62,18 +62,20 @@ class Vacation extends Component {
   unFollow() {
     this.props.dispatchUnFollow({
       username: this.props.userInfo.username,
-      vacation_id: this.props.vacation.ID
+      vacation_id: this.props.vacation.id
     })
     this.setState({ isFollow: false });
   }
 
   componentWillMount() {     //קורה לפני שהרנדר מצטייר
-    if (this.props.followArr.indexOf(this.props.vacation.ID) != -1) {   //קיים פולו על הכרטיסיה וצריך לעדכן את הסטיט
+    if (this.props.followArr.indexOf(this.props.vacation.id) != -1) {   //קיים פולו על הכרטיסיה וצריך לעדכן את הסטיט
       this.setState({ isFollow: true });
     }
   }
 
   render() {
+    const todate = this.state.todate.split('-').reverse().join('-');
+    const fromdate = this.state.fromdate.split('-').reverse().join('-');
     return (
       <div className="Vacation">
 
@@ -82,11 +84,11 @@ class Vacation extends Component {
             checkRol("admin",this.props.userInfo) &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
             <React.Fragment> 
             <div className="delete-edit">
-              {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
+              {/* <div  className="card-title">#vacation-num : {this.props.vacation.id}</div>   */}
               <i className="fas fa-times" onClick={this.deleteVacationHandler.bind(this)} ></i>
               <i className="fas fa-pencil-alt" onClick={this.updateVacationHandler.bind(this)} ></i>
             </div>
-             <i className="vacation-id"> ID: {this.props.vacation.ID}</i>
+             <i className="vacation-id"> ID: {this.props.vacation.id}</i>
              </React.Fragment>
           }
 
@@ -98,8 +100,8 @@ class Vacation extends Component {
                 <h6 name="destination" className="card-title">{this.props.vacation.destination}</h6>
                 <p name="description" className="card-text"> {this.props.vacation.description} </p>
                 <h5 name="price" className="card-price"> {this.props.vacation.price} </h5>
-                <div name="fromDate" > {this.props.vacation.fromDate} </div>
-                <div name="toDate"> {this.props.vacation.toDate} </div>
+                <div name="fromdate" > {fromdate} </div>
+                <div name="todate"> {todate} </div>
               </div>
             </React.Fragment>
           }
@@ -114,8 +116,8 @@ class Vacation extends Component {
                 <input name="destination" value={this.state.destination} onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert destination" />
                 <input name="description" value={this.state.description} onChange={this.handleChange.bind(this)} type="text" className="form-control" placeholder="Please insert description" />
                 <input name="price" value={this.state.price} onChange={this.handleChange.bind(this)} type="number" className="form-control" placeholder="Please insert price" />
-                <input name="fromDate" value={this.state.fromDate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
-                <input name="toDate" value={this.state.toDate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
+                <input name="fromdate" value={this.state.fromdate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
+                <input name="todate" value={this.state.todate} onChange={this.handleChange.bind(this)} type="date" className="form-control" />
               </div>
               <div className="update-button">
                 <button className="save-button" onClick={this.saveUpdate.bind(this)} > Save </button>
