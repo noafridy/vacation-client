@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { followShowGraph } from "../actions"
 import { Link } from "react-router-dom";
-import {checkRol} from "../functions";
+import { checkRol } from "../functions";
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
@@ -14,30 +14,36 @@ class Graph extends Component {
   }
 
   render() {
-    
-    let data = this.props.graphPoints.map(follow => {
-      return (
-        { name: follow.vacation_id, 'number of followers': follow.followers }
-      );
-    })
+
+    let data;
+    if (this.props.graphPoints.length === 0) {
+      data = [];
+    } else {
+      data = this.props.graphPoints.map(follow => {
+        return (
+          { name: follow.vacation_id, 'number of followers': follow.followers }
+        );
+      })
+    }
+
 
     return (
 
       <div className="graph page-img">
         <React.Fragment>
           {
-            checkRol("admin",this.props.userInfo) &&
+            checkRol("admin", this.props.userInfo) &&
             <div className="link-graph">
-             <i class="fas fa-angle-double-left"></i>
+              <i class="fas fa-angle-double-left"></i>
               <Link className="graph-vaction-link" to="/"> Back To All Vacation</Link>
             </div>
           }
         </React.Fragment>
         {
-         checkRol("admin",this.props.userInfo) &&
+          checkRol("admin", this.props.userInfo) &&
           <React.Fragment>
             <h3> number of followers by vacation id</h3>
-            <BarChart
+            {(data.length !== 0) && <BarChart
               width={500}
               height={300}
               data={data}
@@ -52,7 +58,7 @@ class Graph extends Component {
               <Legend />
               <Bar dataKey="number of followers" fill="#20599a" />
             </BarChart>
-
+            }
           </React.Fragment>
         }
 
@@ -71,7 +77,7 @@ const mapStateToProps = (state) => {   //mapStateToProps בסטייט יש את 
 
 const mapDispatchToProps = (dispatch) => {     //mapDispatchToProps כדי לקבל את האניפורמציה לבנית הגרף מהנק קצה
   return {
-    dispatchFollowGraph:() => dispatch(followShowGraph())
+    dispatchFollowGraph: () => dispatch(followShowGraph())
   }
 };
 
