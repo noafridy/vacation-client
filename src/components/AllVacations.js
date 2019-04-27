@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"; //אם נרצה גישה לכל מה שקשור לרידקס נוסיף את הקונקט
+import { connect } from "react-redux"; 
 import { getVacations, socketUpdateVecations, myFollow } from "../actions"
 import { Link } from "react-router-dom";
 import Vacation from './Vacation';
@@ -58,18 +58,17 @@ class AllVacations extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
+const mapStateToProps = (state) => {   
   return {
-    allvacation: state.vacationReducer,   // state.allmovies  is the state of redux, the this.props.allmovies will exsist in this comp also
+    allvacation: state.vacationReducer,   
     userInfo: state.userReducer,
     followArr: state.followReducer
   };
 };
 
-const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
+const mapDispatchToProps = (dispatch) => {     
   return {
-    dispatchGetVacations: () => dispatch(getVacations()),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-    // dispatchSocketUpdateVecations: (data) => dispatch(socketUpdateVecations(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchGetVacations: () => dispatch(getVacations()),  
     dispatchMyFollows: (data) => dispatch(myFollow(data))
   }
 };

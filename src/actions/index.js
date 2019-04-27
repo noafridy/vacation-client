@@ -16,7 +16,7 @@ export const registration = data => {
          alert(resp.statusText);
          return ({ type: "REGISTRATION", payload: {} });
       } else {
-         const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         const jsonData = await resp.json();  
          alert("The registration was successful");
          window.location = "/";
          dispatch({ type: "REGISTRATION", payload: jsonData });
@@ -27,10 +27,10 @@ export const registration = data => {
 export const login = data => {
    return async dispatch => {
       const resp = await fetch(`http://localhost:3001/user/${data.username}/${data.password}`, {
-         credentials: 'include'    //כדי שנוכל לקבל את הקוקי כחלק מהתשובה מהשרת
+         credentials: 'include'    
       });
       if (resp.status === 200) {
-         const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         const jsonData = await resp.json();  
          alert("Login successfully");
          window.location = "/";
          dispatch({ type: "LOGIN", payload: jsonData });
@@ -44,9 +44,9 @@ export const login = data => {
 
 export const getVacations = () => {
    return async dispatch => {
-      const resp = await fetch('http://localhost:3001/vacation/all');//defualt
+      const resp = await fetch('http://localhost:3001/vacation/all');
       if (resp.status === 200) {
-         const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         const jsonData = await resp.json();   
          dispatch({ type: "GETVACATION", payload: jsonData });
       } else {
          alert("error");
@@ -54,7 +54,7 @@ export const getVacations = () => {
    };
 }
 
-export const addVacation = data => {  // data its what i get from react and send to server
+export const addVacation = data => {  
    return async dispatch => {
       const resp = await fetch('http://localhost:3001/vacation/add', {
          method: 'POST',
@@ -65,9 +65,8 @@ export const addVacation = data => {  // data its what i get from react and send
          credentials: 'include',
          body: JSON.stringify(data)
       });
-      //defualt
       if (resp.status === 200) {
-         const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         const jsonData = await resp.json();  
          alert("The vacation was added");
          dispatch({ type: "ADDVACATION", payload: jsonData });
       } else {
@@ -76,7 +75,7 @@ export const addVacation = data => {  // data its what i get from react and send
    }
 }
 
-export const deleteVacation = ID => {  // data its what i get from react and send to server
+export const deleteVacation = ID => {  
    return async dispatch => {
    const resp = await fetch(`http://localhost:3001/vacation/${ID}`, {
       method: 'DELETE',
@@ -84,10 +83,10 @@ export const deleteVacation = ID => {  // data its what i get from react and sen
          'Accept': 'application/json',
          'Content-Type': 'application/json'
       }
-      , credentials: 'include'   //credentials send the cookie to server
+      , credentials: 'include'  
    });
    if (resp.status === 200) {
-      const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+      const jsonData = await resp.json();  
       dispatch ({ type: "DELETEVACATION", payload: jsonData });
    } else {
       alert("The vacation are not deleted, Please try again ")
@@ -95,14 +94,14 @@ export const deleteVacation = ID => {  // data its what i get from react and sen
 }
 }
 
-export const socketUpdateVecations = vecations => {  // data its what i get from react and send to server
+export const socketUpdateVecations = vecations => {  
    return dispatch => {
       alert('vecation list got updated');
       return dispatch({ type: "SOCKETUPDATEVACATIONS", payload: vecations });
    }
 }
 
-export const updateVacation = data => {  // data its what i get from react and send to server
+export const updateVacation = data => { 
    return async dispatch => {
    const resp = await fetch(`http://localhost:3001/vacation/update/${data.vacation_id}`, {
       method: 'PUT',
@@ -111,11 +110,10 @@ export const updateVacation = data => {  // data its what i get from react and s
          'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify(data)   //in body the data its what i send to server
+      body: JSON.stringify(data)   
    });
-   //defualt
    if (resp.status === 200) {
-      const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+      const jsonData = await resp.json();   
       dispatch ({ type: "UPDATEVACATION", payload: jsonData });
    } else {
       alert("The vacation was not update, please try again");
@@ -124,7 +122,7 @@ export const updateVacation = data => {  // data its what i get from react and s
 }
 //**********/ Follow **********//
 
-export const follow = data => {  // data its what i get from react and send to server
+export const follow = data => { 
    return async dispatch => {
    const resp = await fetch(`http://localhost:3001/vacation/follow`, {
       method: 'POST',
@@ -132,12 +130,12 @@ export const follow = data => {  // data its what i get from react and send to s
          'Accept': 'application/json',
          'Content-Type': 'application/json'
       }
-      , credentials: 'include',   //credentials send the cookie to server
+      , credentials: 'include',   
       body: JSON.stringify(data)
    });
 
    if (resp.status === 200) {
-      const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+      const jsonData = await resp.json();  
       dispatch ({ type: "FOLLOW", payload: jsonData });
    } else {
       alert("error");
@@ -147,9 +145,9 @@ export const follow = data => {  // data its what i get from react and send to s
 
 export const myFollow = username => {
    return async dispatch => {
-      const resp = await fetch(`http://localhost:3001/vacation/myFollow/${username}`);//defualt
+      const resp = await fetch(`http://localhost:3001/vacation/myFollow/${username}`);
       if (resp.status === 200) {
-         const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         const jsonData = await resp.json();  
          dispatch({ type: "MYFOLLOW", payload: jsonData });
       } else {
          alert("error");
@@ -157,7 +155,7 @@ export const myFollow = username => {
    }
 }
 
-export const unFollow = data => {  // data its what i get from react and send to server
+export const unFollow = data => {  
    return async dispatch => {
    const resp = await fetch(`http://localhost:3001/vacation//unFollw/${data.vacation_id}/${data.username}`, {
       method: 'DELETE',
@@ -165,10 +163,10 @@ export const unFollow = data => {  // data its what i get from react and send to
          'Accept': 'application/json',
          'Content-Type': 'application/json'
       }
-      , credentials: 'include'   //credentials send the cookie to server
+      , credentials: 'include'   
    });
    if (resp.status === 200) {
-      const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+      const jsonData = await resp.json();  
       dispatch ({ type: "UNFOLLOW", payload: jsonData });
    } else {
       alert("you are still unfollow, Please try again ")
@@ -178,9 +176,9 @@ export const unFollow = data => {  // data its what i get from react and send to
 
 export const followShowGraph = () => {
    return async dispatch => {
-      const resp = await fetch('http://localhost:3001/vacation/allFollowVacation');//defualt
+      const resp = await fetch('http://localhost:3001/vacation/allFollowVacation');
       if (resp.status === 200) {
-         const jsonData = await resp.json();   //jsonData is hamara of resp to JSON resp
+         const jsonData = await resp.json();   
          dispatch({ type: "FOLLOWSHOWGRAPH", payload: jsonData });
       } else {
          alert("error");

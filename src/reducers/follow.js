@@ -1,6 +1,4 @@
-
-
-const followReducer = (state = [], action) => {  //reducer have state, we can have more then 1 reducer. store is OBJ with all the states from all the reducer
+const followReducer = (state = [], action) => {  
 
     switch (action.type) {
 
@@ -8,7 +6,7 @@ const followReducer = (state = [], action) => {  //reducer have state, we can ha
         case 'MYFOLLOW':
         case 'UNFOLLOW':
         case 'FOLLOWSHOWGRAPH':
-            let newState = action.payload;  //jsonData form fatch
+            let newState = action.payload;  
             state = newState;
             return state;
        
@@ -17,5 +15,5 @@ const followReducer = (state = [], action) => {  //reducer have state, we can ha
     }
 };
 export default followReducer;
-//export default (userVacationReducer = (state = 0, action) => state)
+
 

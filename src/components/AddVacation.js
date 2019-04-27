@@ -67,7 +67,7 @@ class AddVacation extends Component {
         toDate: ""
       })
 
-      // clear the file in the file input
+      // clear file input
       this.fileUpload.current.value = null
     }
   }
@@ -113,15 +113,15 @@ class AddVacation extends Component {
   }
 }
 
-const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
+const mapStateToProps = (state) => {   
   return {
     userInfo: state.userReducer
   };
 };
 
-const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
+const mapDispatchToProps = (dispatch) => {     
   return {
-    dispatchInsertVacation: (data) => dispatch(addVacation(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchInsertVacation: (data) => dispatch(addVacation(data))  
 
   }
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux"; //אם נרצה גישה לכל מה שקשור לרידקס נוסיף את הקונקט
+import { connect } from "react-redux"; 
 import { deleteVacation, follow, unFollow, updateVacation } from "../actions"
 import {checkRol} from "../functions";
 
@@ -9,7 +9,7 @@ class Vacation extends Component {
     edit: false,
     vacation_id: this.props.vacation.ID || "",
     img: this.props.vacation.img || "",
-    destination: this.props.vacation.destination || "",  //מאתחלת בשדה ששיך לכרטיסיה
+    destination: this.props.vacation.destination || "", 
     description: this.props.vacation.description || "",
     price: this.props.vacation.price || "",
     fromDate: this.props.vacation.fromDate || "",
@@ -25,7 +25,7 @@ class Vacation extends Component {
   }
 
   saveUpdate() {
-    this.props.dispatchUpdate(this.state);  //I sent to server this.state
+    this.props.dispatchUpdate(this.state);  
     this.cancelUpdate();
   }
 
@@ -38,13 +38,13 @@ class Vacation extends Component {
     var file = Array.from(event.target.files)[0];
     var reader = new FileReader();
     reader.onload = function () {
-      const img = btoa(reader.result); // conversion to base64
+      const img = btoa(reader.result); 
       that.setState({ img });
     };
     reader.onerror = function () {
       console.log('there are some problems');
     };
-    reader.readAsBinaryString(file); //read file in binary format
+    reader.readAsBinaryString(file); 
   }
 
   cancelUpdate() {
@@ -67,8 +67,8 @@ class Vacation extends Component {
     this.setState({ isFollow: false });
   }
 
-  componentWillMount() {     //קורה לפני שהרנדר מצטייר
-    if (this.props.followArr.indexOf(this.props.vacation.ID) != -1) {   //קיים פולו על הכרטיסיה וצריך לעדכן את הסטיט
+  componentWillMount() {     
+    if (this.props.followArr.indexOf(this.props.vacation.ID) != -1) {   
       this.setState({ isFollow: true });
     }
   }
@@ -82,10 +82,9 @@ class Vacation extends Component {
 
         <div className="card">
           {
-            checkRol("admin",this.props.userInfo) &&   //&& המטרה היא שאם הביטוי יצליח הוא ממשיך הלאה לדיב ומצייר אותו ואם הביטוי נכשל הוא לא ימשיך לדיב
+            checkRol("admin",this.props.userInfo) &&   
             <React.Fragment> 
             <div className="delete-edit">
-              {/* <div  className="card-title">#vacation-num : {this.props.vacation.ID}</div>   */}
               <i className="fas fa-times" onClick={this.deleteVacationHandler.bind(this)} ></i>
               <i className="fas fa-pencil-alt" onClick={this.updateVacationHandler.bind(this)} ></i>
             </div>
@@ -130,14 +129,13 @@ class Vacation extends Component {
 
           {
             checkRol("user",this.props.userInfo) &&
-            <React.Fragment>    {/*  סוג של עטיפה כמו דיב רק שזה לא מתנהג כמו תגית בגלל שהשתמשנו בסימן של וגם */}
+            <React.Fragment>   
               {!this.state.isFollow &&
                 <div className=" follow" onClick={this.addFollow.bind(this)} >
                   <i className="far fa-heart"></i>
                   <span className="follow-button" > Follow </span>
                 </div>
               }
-
               {this.state.isFollow &&
                 <div className=" follow" onClick={this.unFollow.bind(this)}>
                   <span className="follow-button"> Unfollow </span>
@@ -152,18 +150,18 @@ class Vacation extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
+const mapStateToProps = (state) => {   
   return {
-    allvacation: state.vacationReducer,   // state.allmovies  is the state of redux, the this.props.allmovies will exsist in this comp also
-    userInfo: state.userReducer,           // מביאה את היוזר המחובר
-    followArr: state.followReducer        //the name its from the index reducer
+    allvacation: state.vacationReducer,   
+    userInfo: state.userReducer,          
+    followArr: state.followReducer        
   };
 };
 
-const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
+const mapDispatchToProps = (dispatch) => {     
   return {
-    dispatchDeleteVacation:(data) => dispatch(deleteVacation(data)),  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
-    dispatchFollow:(data) => dispatch(follow(data)),  //follow its from action
+    dispatchDeleteVacation:(data) => dispatch(deleteVacation(data)),  
+    dispatchFollow:(data) => dispatch(follow(data)),  
     dispatchUnFollow:(data) => dispatch(unFollow(data)),
     dispatchUpdate:(data) => dispatch(updateVacation(data))
   }

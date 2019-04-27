@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";  //that i can use in router
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import userReducer from '../reducers/user';
 class Header extends Component {
 
     handleLogout = () => {
@@ -13,9 +12,8 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                {/* דרך נוספת ל איף */}
-                {!this.props.userInfo && 
-                    <React.Fragment>  {/* יוצר דיו עוטף בלי המילה דיו */}
+                {!this.props.userInfo &&
+                    <React.Fragment>
                         <img src="/logo.jpg" />
                         <div className="header-links">
                             <Link to="/login">Login</Link>
@@ -24,14 +22,14 @@ class Header extends Component {
                     </React.Fragment>
                 }
                 {this.props.userInfo &&
-                <React.Fragment>
-                    
-                    <Link to="/"><img src="/logo.jpg" /></Link>
+                    <React.Fragment>
+
+                        <Link to="/"><img src="/logo.jpg" /></Link>
                         <div className="header-links">
                             <span className="username-hello">{`Hello ${this.props.userInfo.firstName} ${this.props.userInfo.lastName}`}</span>
-                            <a href="/" onClick={this.handleLogout}>Logout</a>  {/* !# סימן מוסכם שלא משנה כתובת */}
+                            <a href="/" onClick={this.handleLogout}>Logout</a> 
                         </div>
-                </React.Fragment>
+                    </React.Fragment>
                 }
 
             </div>
@@ -39,9 +37,9 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = (state) => {   //mapStateToProps is connect to the store
+const mapStateToProps = (state) => {   
     return {
-        userInfo: state.userReducer   // get the user information - needed to know if user is logged in
+        userInfo: state.userReducer   
     };
 };
 

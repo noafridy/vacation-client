@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";  //that i can use in router
+import { Link } from "react-router-dom";
 import { login } from "../actions"
 import { connect } from "react-redux";
 
@@ -19,7 +19,7 @@ class Login extends Component {
     }
     else if (!this.state.password) {
       window.alert("Please insert password");
-    }else{
+    } else {
       this.props.dispatchLogin(this.state);
     }
 
@@ -29,18 +29,18 @@ class Login extends Component {
       <div className="Login page-img">
 
         <form className="login-form">
-        <h4 id="login-title">Login</h4><br/>
+          <h4 id="login-title">Login</h4><br />
           <div className="form-group">
-            <input type="text" name="username" onChange={this.handleChange.bind(this)} className="form-control" id="usernameid"  placeholder="Enter your username" />
+            <input type="text" name="username" onChange={this.handleChange.bind(this)} className="form-control" id="usernameid" placeholder="Enter your username" />
           </div>
           <div className="form-group">
             <input type="password" name="password" onChange={this.handleChange.bind(this)} className="form-control" id="passwordid" placeholder="Enter your password" />
           </div>
-          <button type="button" className="btn btn-primary" onClick={this.mandatoryFieldChecks.bind(this)}>Continue</button> 
-          <div className="endForm"><br/>
-          <div className="form-group">
-          Not a member yet?<Link className="login-link" to="/registration"> Join now</Link> 
-          </div>
+          <button type="button" className="btn btn-primary" onClick={this.mandatoryFieldChecks.bind(this)}>Continue</button>
+          <div className="endForm"><br />
+            <div className="form-group">
+              Not a member yet?<Link className="login-link" to="/registration"> Join now</Link>
+            </div>
           </div>
         </form>
 
@@ -50,9 +50,9 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {     //update the reducer - actions
+const mapDispatchToProps = (dispatch) => {
   return {
-    dispatchLogin:(data) => dispatch(login(data))  //the action is async and becouse that dispatchSearchMovie (the function) need to be also async 
+    dispatchLogin: (data) => dispatch(login(data))
   }
 };
 
